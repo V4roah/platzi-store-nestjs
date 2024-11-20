@@ -1,5 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 
 @Controller('brands')
 export class BrandsController {
@@ -16,5 +24,15 @@ export class BrandsController {
   @Post()
   create(@Body() payload: any) {
     return { message: `Accion de crear`, payload };
+  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() payload: any) {
+    return { id, payload };
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return { id };
   }
 }
